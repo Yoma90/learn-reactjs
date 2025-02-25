@@ -3,17 +3,50 @@
   {{> head}}
   <body>
     {{> header-bar }}
+    <div id="root" class="container"></div>
   </body>
 
   <script>
-    // 🦁 crée un div avec l'id "root" et la classe "container"
-    
-    // 🦁 crée un button
-    
-    // 🦁 ajoute les classes "btn" et "btn-primary" dedans
-    
-    // 🦁 ajoute le text "Hello 👋" dedans
-    
-    // 🦁 ajoute le button dans l'élément "root"
+    const button = document.createElement('button');
+    button.innerText = 'Hello 👋';
+    button.classList.add('btn', 'btn-primary');
+
+    button.addEventListener('click', () => {
+      alert('Le bouton a été cliqué!!!');
+    });
+
+    const Counter = (initialValue) => {
+      initialValue = typeof initialValue !== 'number' ? 0 : initialValue;
+      const counterButton = document.createElement('button'); // 🦁 remplace "" par la création d'un bouton
+      // 🦁 Ajout du texte
+      counterButton.innerText = initialValue;
+      counterButton.classList.add('btn', 'btn-primary');
+
+      let count = initialValue;
+      // 🦁 Ajout de l'event
+      counterButton.addEventListener('click', () => {
+        count = count + 1;
+        counterButton.innerText = count;
+      });
+      return counterButton;
+    };
+
+    const fruits = ['banane', 'orange', 'pomme', 'ananas'];
+    const fruitsUl = document.createElement('ul');
+    fruitsUl.classList.add('list-group');
+
+    for (const fruit of fruits) {
+      const fruitsLi = document.createElement('li');
+      fruitsLi.innerText = fruit;
+      fruitsLi.classList.add('list-group-item');
+      fruitsUl.appendChild(fruitsLi);
+    }
+
+    const root = document.querySelector('#root');
+    root.appendChild(button);
+    root.appendChild(Counter(0));
+    root.appendChild(Counter(0));
+    root.appendChild(Counter(0));
+    root.appendChild(fruitsUl);
   </script>
 </html>

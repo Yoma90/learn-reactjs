@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head}}
+
+    <!-- ℹ️ Les scripts React pour qu'on puisse utiliser React.createElement -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    {{> header-bar }}
+
+    <div id="root" class="container"></div>
+  </body>
+
+  <script>
+    const main = React.createElement(
+      'div',
+      null,
+      helloButton,
+      React.createElement(Card)
+    );
+  </script>
+</html>
